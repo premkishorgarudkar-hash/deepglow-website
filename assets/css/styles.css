@@ -283,7 +283,7 @@ a.topbar__item:hover { color: var(--gold-soft); text-decoration: underline; }
   background: radial-gradient(160px 120px at 50% 60%, rgba(255, 253, 247, .9), transparent 70%), linear-gradient(135deg, var(--sage-soft), var(--gold-soft));
 }
 .card__art svg.card__illo { width: 86px; height: 86px; position: relative; z-index: 1; }
-.card__photo { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.card__photo { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; transition: transform .6s var(--ease); }
 .card:hover .card__photo { transform: scale(1.04); }
 .card__label { z-index: 2; }
 .card__art .card__sprig { position: absolute; width: 90px; height: 120px; left: -10px; bottom: -30px; color: var(--sage); opacity: .5; }
@@ -574,6 +574,7 @@ a.topbar__item:hover { color: var(--gold-soft); text-decoration: underline; }
 .footer .btn--light { color: var(--green); }
 .footer__bottom { border-top: 1px solid rgba(251, 246, 233, .18); padding-top: 22px; padding-bottom: 26px; font-size: .82rem; color: var(--sage-soft); text-align: center; }
 .footer__bottom p { margin: 0; }
+.footer__bottom .footer__credit { margin-top: 6px; font-size: .75rem; opacity: .85; }
 
 /* ---------- 13. Floating WhatsApp ---------- */
 .wa-float {

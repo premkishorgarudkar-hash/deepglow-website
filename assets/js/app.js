@@ -26,7 +26,7 @@
     {
       id: "glow-facial-wax",
       image: "assets/img/packages/glow-facial-wax.jpg",
-      imageAlt: "Beautician giving a relaxing facial to a client at home, with waxing essentials arranged nearby",
+      imageAlt: "Beautician applying a facial mask with a brush to a relaxed client",
       name: "Glow Facial & Wax Package",
       label: "Facial · Wax",
       price: 1999,
@@ -36,7 +36,7 @@
     {
       id: "complete-wax",
       image: "assets/img/packages/complete-wax.jpg",
-      imageAlt: "Professional waxing kit with warm wax, spatulas and clean towels set up for an at-home waxing session",
+      imageAlt: "Warm golden wax dripping from a wooden waxing spatula",
       name: "Complete Wax Package (All-in-One)",
       label: "Waxing",
       price: 1100,
@@ -46,7 +46,7 @@
     {
       id: "dtan-wax-relax",
       image: "assets/img/packages/dtan-wax-relax.jpg",
-      imageAlt: "Client relaxing with a D-Tan face pack while a beautician gives a gentle head massage at home",
+      imageAlt: "Client relaxing with eyes closed during a gentle face and head massage",
       name: "D-Tan Wax & Relax Package",
       label: "D-Tan · Wax · Massage",
       price: 1200,
@@ -56,7 +56,7 @@
     {
       id: "dtan-relaxation",
       image: "assets/img/packages/dtan-relaxation.jpg",
-      imageAlt: "Calm at-home spa setting with a D-Tan facial and a soothing back massage",
+      imageAlt: "Client enjoying a relaxing back and shoulder massage",
       name: "D-Tan Relaxation Package",
       label: "D-Tan · Relaxation",
       price: 1100,
@@ -66,7 +66,7 @@
     {
       id: "dtan-massage-wax",
       image: "assets/img/packages/dtan-massage-wax.jpg",
-      imageAlt: "At-home beauty session combining a D-Tan facial, massage oils and a waxing kit",
+      imageAlt: "Beautician in gloves stirring warm wax in a wax heater",
       name: "D-Tan Massage & Wax Package",
       label: "D-Tan · Massage · Wax",
       price: 1100,
@@ -76,7 +76,7 @@
     {
       id: "vitamin-c-glow",
       image: "assets/img/packages/vitamin-c-glow.jpg",
-      imageAlt: "Vitamin C clean-up with fresh orange slices and skincare beside a relaxed client at home",
+      imageAlt: "Client relaxing with a face pack and fresh citrus slices over her eyes",
       name: "Vitamin C Glow Package (All-in-One)",
       label: "Clean-Up · Wax · Massage",
       price: 1500,

@@ -35,6 +35,23 @@ Then open http://localhost:5173. (Opening `index.html` directly also works, but 
 | Any CSS or JS file | After editing, change the `?v=…` number on its `<link>`/`<script>` tag in `index.html` (e.g. `?v=20261001c` → `?v=20261015`) so visitors' browsers load the new version instead of an old cached copy. |
 | Hero photo | Replace `assets/img/hero-facial.webp` and `.jpg` (portrait, about 500×770) |
 
+## Photo credits
+
+The package card photos are free photos from [Unsplash](https://unsplash.com/), used under the [Unsplash License](https://unsplash.com/license).
+That licence allows free commercial use, and attribution isn't required, but it is appreciated.
+They are illustrative: they don't show DeepGlow staff or clients.
+
+| File | Photo | Photographer |
+|---|---|---|
+| `glow-facial-wax.jpg` | [Facial mask treatment](https://unsplash.com/photos/Pe9IXUuC6QU) | Rosa Rafael |
+| `complete-wax.jpg` | [Sugar wax](https://unsplash.com/photos/dFAdCxeJmwo) (cropped to the wax drip) | Maryam Shittu |
+| `dtan-wax-relax.jpg` | [Facial massage](https://unsplash.com/photos/16mHHrY3PUk) | Ionela Mat |
+| `dtan-relaxation.jpg` | [Back massage](https://unsplash.com/photos/Y1JKxNFwZx4) | yury kirillov |
+| `dtan-massage-wax.jpg` | [Wax heater](https://unsplash.com/photos/lrW3m3p4mYQ) | Grove Brands |
+| `vitamin-c-glow.jpg` | [Face pack with lemon slices](https://unsplash.com/photos/3r5n5i8mzcw) | Alireza Mirzabegi |
+
+To use your own photos instead, replace these files and keep the same names (see `IMAGE-PROMPTS.md`).
+
 ## How booking works
 
 1. The customer adds packages to the cart. The cart is saved in `localStorage`, so a page refresh keeps it.
