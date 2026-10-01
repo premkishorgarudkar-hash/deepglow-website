@@ -193,6 +193,9 @@ a.topbar__item:hover { color: var(--gold-soft); text-decoration: underline; }
 .hero__title { font-size: clamp(2.6rem, 6.2vw, 4.6rem); font-weight: 500; letter-spacing: -.015em; margin-bottom: .3em; }
 .hero__title em { font-style: italic; font-weight: 400; color: var(--green); position: relative; white-space: nowrap; }
 .hero__title em::after { content: ""; position: absolute; left: 2%; right: 2%; bottom: .06em; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); }
+.hero__kicker { display: flex; font-family: var(--font-sans); line-height: 1.5; margin-bottom: 1.4rem; }
+.hero__main { display: block; }
+.packages__seo { font-size: .9rem; margin-top: 4px; }
 .hero__lead { font-family: var(--font-serif); font-style: italic; font-size: clamp(1.25rem, 2.2vw, 1.55rem); color: var(--green); margin-bottom: .8em; }
 .hero__text { max-width: 34em; color: var(--text); font-size: 1.02rem; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin: 30px 0 22px; }
@@ -438,6 +441,17 @@ a.topbar__item:hover { color: var(--gold-soft); text-decoration: underline; }
 .feature__icon { width: 50px; height: 50px; padding: 12px; border-radius: 50%; background: var(--sage-soft); color: var(--green); margin-bottom: 18px; }
 .feature h3 { font-size: 1.2rem; margin-bottom: .4em; }
 .feature p { font-size: .92rem; color: var(--text-2-strong); margin: 0; }
+
+/* ---------- FAQ ---------- */
+.faq__list { max-width: 820px; margin: 0 auto; display: grid; gap: 12px; }
+.faq__item { background: var(--ivory); border: 1px solid rgba(201, 169, 91, .3); border-radius: var(--radius-sm); box-shadow: var(--shadow); }
+.faq__item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 22px; }
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after { content: "+"; flex: none; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: var(--sage-tint); color: var(--green); font-size: 1.2rem; transition: transform .25s var(--ease); }
+.faq__item[open] summary::after { transform: rotate(45deg); }
+.faq__item summary h3 { font-size: 1.1rem; margin: 0; }
+.faq__item p { padding: 0 22px 20px; margin: 0; color: var(--text-2-strong); }
+.footer__about { font-size: .85rem; color: var(--sage-soft); max-width: 30em; }
 
 /* ---------- 11. Contact ---------- */
 .contact__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 5vw, 64px); align-items: start; }
