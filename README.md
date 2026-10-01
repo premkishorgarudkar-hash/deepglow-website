@@ -32,6 +32,7 @@ Then open http://localhost:5173. (Opening `index.html` directly also works, but 
 | Colours | `:root` variables at the top of `styles.css` |
 | Testimonials | The `#reviews` section in `index.html`. **The four reviews are sample placeholders. Replace them with genuine, permission-approved client reviews before launch**, and remove the "Sample testimonials" line when you do. |
 | Package photos | Save `assets/img/packages/<package-id>.jpg` (3:2 landscape). File names and AI prompts are in `IMAGE-PROMPTS.md`. Cards without a photo show a line illustration. |
+| Any CSS or JS file | After editing, change the `?v=…` number on its `<link>`/`<script>` tag in `index.html` (e.g. `?v=20261001c` → `?v=20261015`) so visitors' browsers load the new version instead of an old cached copy. |
 | Hero photo | Replace `assets/img/hero-facial.webp` and `.jpg` (portrait, about 500×770) |
 
 ## How booking works

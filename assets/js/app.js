@@ -412,6 +412,15 @@
     return r ? r.value : "";
   }
   function normalisePhone(v) { return String(v || "").replace(/[\s-]/g, ""); }
+  /* Keep just the 10-digit mobile number (drops a pasted +91 / 91 / 0 prefix)
+     and space it as "98765 43210" for easy reading. */
+  function formatPhone(v) {
+    var d = String(v || "").replace(/\D/g, "");
+    if (d.length > 10 && d.indexOf("91") === 0) d = d.slice(2);
+    else if (d.length === 11 && d.charAt(0) === "0") d = d.slice(1);
+    d = d.slice(0, 10);
+    return d.length > 5 ? d.slice(0, 5) + " " + d.slice(5) : d;
+  }
   function isValidIndianMobile(v) {
     return /^(?:\+91|91|0)?[6-9]\d{9}$/.test(normalisePhone(v));
   }
@@ -425,7 +434,7 @@
     },
     phone: function (v) {
       if (!v.trim()) return "Please enter your mobile number.";
-      if (!isValidIndianMobile(v)) return "Enter a valid 10-digit Indian mobile number (e.g. 98765 43210 or +91 98765 43210).";
+      if (!isValidIndianMobile(v)) return "Enter a valid 10-digit mobile number starting with 6, 7, 8 or 9 (e.g. 98765 43210).";
       return "";
     },
     address: function (v) { return v.trim() ? "" : "Please enter your full address."; },
@@ -450,13 +459,18 @@
     if (err) err.textContent = msg;
     if (name === "slot") {
       $(".slots", form).classList.toggle("is-invalid", !!msg);
-      return;
+    } else {
+      var el = form.elements[name];
+      if (el) {
+        if (msg) el.setAttribute("aria-invalid", "true");
+        else el.removeAttribute("aria-invalid");
+        // Green tick once a field is filled in correctly
+        if (!msg && el.value.trim()) el.dataset.valid = "1";
+        else delete el.dataset.valid;
+      }
+      if (name === "date") $("#date-chips").classList.toggle("is-invalid", !!msg);
     }
-    var el = form.elements[name];
-    if (el) {
-      if (msg) el.setAttribute("aria-invalid", "true");
-      else el.removeAttribute("aria-invalid");
-    }
+    if (!errorSummary.hidden) updateErrorSummary();
   }
   function validateField(name) {
     var el = form.elements[name];
@@ -477,7 +491,115 @@
     var cleaned = e.target.value.replace(/\D/g, "").slice(0, 6);
     if (cleaned !== e.target.value) e.target.value = cleaned;
   });
-  dateInput.addEventListener("change", function () { validateField("date"); renderMeta(); });
+  /* ---------- Error summary (shown after a failed submit) ---------- */
+  var errorSummary = $("#error-summary");
+  var SUMMARY_ORDER = ["name", "phone", "address", "area", "pincode", "date", "slot"];
+  function focusField(name) {
+    var target = name === "slot" ? $('input[name="slot"]', form)
+      : name === "date" ? ($('input[name="date-chip"]:checked', form) || $('input[name="date-chip"]', form) || dateInput)
+      : form.elements[name];
+    if (target) { target.focus({ preventScroll: true }); target.scrollIntoView({ behavior: "smooth", block: "center" }); }
+  }
+  function updateErrorSummary(show) {
+    var items = [];
+    SUMMARY_ORDER.forEach(function (n) {
+      var msg = $("#err-" + n).textContent;
+      if (msg) items.push('<li><a href="#" data-focus="' + n + '">' + escapeHtml(msg) + "</a></li>");
+    });
+    if (!cart.length && $("#err-cart").textContent) {
+      items.push('<li><a href="#packages">Your cart is empty – add at least one package.</a></li>');
+    }
+    $("#error-summary-list").innerHTML = items.join("");
+    if (show || !errorSummary.hidden) errorSummary.hidden = items.length === 0;
+  }
+  errorSummary.addEventListener("click", function (e) {
+    var a = e.target.closest("[data-focus]");
+    if (!a) return;
+    e.preventDefault();
+    focusField(a.getAttribute("data-focus"));
+  });
+
+  /* ---------- Phone: fixed +91 prefix, auto-spacing, clean pastes ---------- */
+  var phoneInput = form.elements.phone;
+  phoneInput.addEventListener("input", function () {
+    var v = phoneInput.value;
+    var caret = phoneInput.selectionStart || v.length;
+    var digitsBeforeCaret = v.slice(0, caret).replace(/\D/g, "").length;
+    var formatted = formatPhone(v);
+    // A pasted +91/91/0 prefix is dropped, so count those digits out of the caret position too.
+    var dropped = v.replace(/\D/g, "").length - formatted.replace(/\D/g, "").length;
+    if (formatted === v) return;
+    phoneInput.value = formatted;
+    var target = Math.max(0, digitsBeforeCaret - Math.max(0, dropped));
+    var pos = 0, seen = 0;
+    while (pos < formatted.length && seen < target) { if (/\d/.test(formatted.charAt(pos))) seen++; pos++; }
+    try { phoneInput.setSelectionRange(pos, pos); } catch (err) { /* ignore */ }
+  });
+
+  /* ---------- Pincode quick-fill ---------- */
+  form.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-fill-pincode]");
+    if (!b) return;
+    form.elements.pincode.value = b.getAttribute("data-fill-pincode");
+    form.elements.pincode.dataset.touched = "1";
+    validateField("pincode");
+    saveDraft();
+  });
+
+  /* ---------- Date: one-tap chips for the next 10 days ---------- */
+  var DATE_CHIP_DAYS = 10;
+  var dateChips = $("#date-chips");
+  function renderDateChips() {
+    var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var base = new Date();
+    var html = "";
+    for (var i = 0; i < DATE_CHIP_DAYS; i++) {
+      var d = new Date(base.getFullYear(), base.getMonth(), base.getDate() + i);
+      var iso = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+      var top = i === 0 ? "Today" : i === 1 ? "Tomorrow" : days[d.getDay()];
+      html += '<label class="date-chip"><input type="radio" name="date-chip" value="' + iso + '">' +
+        '<span class="date-chip__box"><span class="date-chip__top">' + top + "</span>" +
+        '<span class="date-chip__day">' + d.getDate() + "</span>" +
+        '<span class="date-chip__mon">' + months[d.getMonth()] + "</span></span></label>";
+    }
+    dateChips.innerHTML = html;
+  }
+  function syncDateChips() {
+    $all('input[name="date-chip"]', dateChips).forEach(function (r) { r.checked = r.value === dateInput.value; });
+  }
+  dateChips.addEventListener("change", function (e) {
+    if (!e.target.matches('input[name="date-chip"]')) return;
+    dateInput.value = e.target.value;
+    dateInput.dataset.touched = "1";
+    validateField("date");
+    renderMeta();
+    saveDraft();
+  });
+
+  /* ---------- Notes: one-tap phrases ---------- */
+  var notesInput = form.elements.notes;
+  function noteParts() { return notesInput.value.split(/\s*;\s*/).filter(function (x) { return x.trim(); }); }
+  function syncNoteChips() {
+    var parts = noteParts();
+    $all("[data-note]", form).forEach(function (b) {
+      b.setAttribute("aria-pressed", String(parts.indexOf(b.getAttribute("data-note")) !== -1));
+    });
+  }
+  form.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-note]");
+    if (!b) return;
+    var note = b.getAttribute("data-note");
+    var parts = noteParts();
+    var at = parts.indexOf(note);
+    if (at === -1) parts.push(note); else parts.splice(at, 1);
+    notesInput.value = parts.join("; ").slice(0, 500);
+    syncNoteChips();
+    saveDraft();
+  });
+  notesInput.addEventListener("input", syncNoteChips);
+
+  dateInput.addEventListener("change", function () { syncDateChips(); validateField("date"); renderMeta(); });
   $all('input[name="slot"]', form).forEach(function (r) {
     r.addEventListener("change", function () { validateField("slot"); renderMeta(); });
   });
@@ -497,6 +619,7 @@
       var d = JSON.parse(raw);
       DRAFT_FIELDS.forEach(function (f) { if (typeof d[f] === "string") form.elements[f].value = d[f]; });
       if (d.date && d.date < todayISO()) form.elements.date.value = "";
+      form.elements.phone.value = formatPhone(form.elements.phone.value);
       if (d.slot) {
         var r = form.querySelector('input[name="slot"][value="' + String(d.slot).replace(/"/g, "") + '"]');
         if (r) r.checked = true;
@@ -568,11 +691,12 @@
     }
 
     if (firstInvalid) {
-      var target = firstInvalid === "slot" ? $('input[name="slot"]', form) : form.elements[firstInvalid];
-      target.focus();
-      announce("Please correct the highlighted fields.");
+      updateErrorSummary(true);
+      errorSummary.focus({ preventScroll: true });
+      errorSummary.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
+    errorSummary.hidden = true;
     if (!lines.length) {
       cartErr.scrollIntoView({ behavior: "smooth", block: "center" });
       announce("Your cart is empty. Add at least one package before booking.");
@@ -583,7 +707,7 @@
 
     var data = {
       name: form.elements.name.value.trim(),
-      phone: form.elements.phone.value.trim(),
+      phone: "+91 " + formatPhone(form.elements.phone.value),
       address: form.elements.address.value.trim().replace(/\s*\n\s*/g, ", "),
       area: form.elements.area.value.trim(),
       pincode: form.elements.pincode.value.trim(),
@@ -625,6 +749,10 @@
     storageRemove("sessionStorage", FORM_KEY);
     Object.keys(validators).forEach(function (n) { setError(n, ""); });
     $all("[data-touched]", form).forEach(function (el) { delete el.dataset.touched; });
+    $all("[data-valid]", form).forEach(function (el) { delete el.dataset.valid; });
+    errorSummary.hidden = true;
+    syncDateChips();
+    syncNoteChips();
     handoff.hidden = true;
     renderMeta();
     announce("Booking cleared. You can start a new booking.");
@@ -728,7 +856,15 @@
   try {
     renderPackages();
     observeReveals(grid);
+    renderDateChips();
     loadDraft();
+    // Show green ticks for valid details restored from a saved draft.
+    ["name", "phone", "address", "area", "pincode", "date"].forEach(function (n) {
+      var el = form.elements[n];
+      if (el.value.trim() && !validators[n](el.value)) el.dataset.valid = "1";
+    });
+    syncDateChips();
+    syncNoteChips();
     renderAll();
     renderMeta();
     setNavTop();

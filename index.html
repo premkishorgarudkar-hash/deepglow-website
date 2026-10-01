@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/img/hero-facial.webp" type="image/webp">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261001c">
 
   <script type="application/ld+json">
   {
@@ -152,6 +152,9 @@
     <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
     <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 9.5h8M8 12.5h5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
     <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3c.8 4.6 2.4 6.2 7 7-4.6.8-6.2 2.4-7 7-.8-4.6-2.4-6.2-7-7 4.6-.8 6.2-2.4 7-7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M18.5 16.5c.3 1.6.9 2.2 2.5 2.5-1.6.3-2.2.9-2.5 2.5-.3-1.6-.9-2.2-2.5-2.5 1.6-.3 2.2-.9 2.5-2.5z" fill="currentColor"/></symbol>
+    <symbol id="i-sunrise" viewBox="0 0 24 24"><path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 4v4M4.9 10.9l1.8 1.4M19.1 10.9l-1.8 1.4M9.5 6.5L12 4l2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
     <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></symbol>
     <!-- Brand leaves used in the logo -->
     <symbol id="logo-leaves" viewBox="0 0 40 30"><path d="M18 28C10 25 6 16 10 4c8 4 11 14 8 24z" fill="#6F8157"/><path d="M20 28c1-10 6-18 17-21-1 11-8 19-17 21z" fill="#8A9A6B"/><path d="M18 28c-2-7-4-14-6-20M20 28c3-6 7-12 13-17" fill="none" stroke="#FBF6E9" stroke-width="1" stroke-linecap="round" opacity=".7"/></symbol>
@@ -217,6 +220,7 @@
   <main id="main">
     <!-- ============ 3. Hero ============ -->
     <section class="hero" id="home" aria-labelledby="hero-title">
+      <canvas class="hero__particles" aria-hidden="true"></canvas>
       <svg class="deco deco--hero-left" aria-hidden="true"><use href="#sprig"/></svg>
       <div class="container hero__grid">
         <div class="hero__copy reveal">
@@ -311,7 +315,7 @@
         </header>
 
         <!-- Package cards are rendered from the PACKAGES list in assets/js/app.js -->
-        <div class="package-grid" id="package-grid"></div>
+        <div class="package-grid" id="package-grid" data-explode></div>
         <noscript>
           <p class="notice">Please enable JavaScript to add packages to your cart, or <a href="https://wa.me/917709753948">book directly on WhatsApp at +91 7709753948</a>.</p>
         </noscript>
@@ -369,61 +373,101 @@
 
         <form class="booking__grid" id="booking-form" novalidate>
           <div class="panel booking__fields">
-            <h3 class="panel__title">Your details</h3>
-            <p class="muted small">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
-
-            <div class="field">
-              <label for="f-name">Full Name <span class="req" aria-hidden="true">*</span></label>
-              <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="80" aria-describedby="err-name">
-              <p class="field__error" id="err-name" role="alert"></p>
+            <div class="error-summary" id="error-summary" tabindex="-1" role="alert" hidden>
+              <p class="error-summary__title">Please check these details:</p>
+              <ul id="error-summary-list"></ul>
             </div>
 
-            <div class="field">
-              <label for="f-phone">Phone Number <span class="req" aria-hidden="true">*</span></label>
-              <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20" placeholder="e.g. 98765 43210" aria-describedby="hint-phone err-phone">
-              <p class="field__hint" id="hint-phone">10-digit Indian mobile number. +91 is optional.</p>
-              <p class="field__error" id="err-phone" role="alert"></p>
-            </div>
+            <!-- Step 1 -->
+            <fieldset class="form-step">
+              <legend class="form-step__title"><span class="form-step__num" aria-hidden="true">1</span> Your contact details</legend>
 
-            <div class="field">
-              <label for="f-address">Full Address <span class="req" aria-hidden="true">*</span></label>
-              <textarea id="f-address" name="address" rows="3" autocomplete="street-address" required maxlength="300" placeholder="Flat / house no., building, street" aria-describedby="err-address"></textarea>
-              <p class="field__error" id="err-address" role="alert"></p>
-            </div>
-
-            <div class="field-row">
               <div class="field">
-                <label for="f-area">Area / Landmark <span class="req" aria-hidden="true">*</span></label>
-                <input id="f-area" name="area" type="text" required maxlength="100" placeholder="e.g. Near Lohegaon Road" aria-describedby="err-area">
-                <p class="field__error" id="err-area" role="alert"></p>
+                <label for="f-name">Full Name <span class="req" aria-hidden="true">*</span></label>
+                <input id="f-name" name="name" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="next" required maxlength="80" placeholder="e.g. Priya Sharma" aria-describedby="err-name">
+                <p class="field__error" id="err-name"></p>
               </div>
+
               <div class="field">
-                <label for="f-pincode">Pincode <span class="req" aria-hidden="true">*</span></label>
-                <input id="f-pincode" name="pincode" type="text" inputmode="numeric" autocomplete="postal-code" required maxlength="6" placeholder="6 digits" aria-describedby="err-pincode">
-                <p class="field__error" id="err-pincode" role="alert"></p>
+                <label for="f-phone">WhatsApp / Mobile Number <span class="req" aria-hidden="true">*</span></label>
+                <div class="input-prefix">
+                  <span class="input-prefix__code" aria-hidden="true">+91</span>
+                  <input id="f-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" enterkeyhint="next" required maxlength="16" placeholder="98765 43210" aria-describedby="hint-phone err-phone">
+                </div>
+                <p class="field__hint" id="hint-phone">10-digit mobile number. Deepa will confirm your booking on this number.</p>
+                <p class="field__error" id="err-phone"></p>
               </div>
-            </div>
-
-            <div class="field">
-              <label for="f-date">Preferred Date <span class="req" aria-hidden="true">*</span></label>
-              <input id="f-date" name="date" type="date" required aria-describedby="err-date">
-              <p class="field__error" id="err-date" role="alert"></p>
-            </div>
-
-            <fieldset class="field slots" aria-describedby="err-slot">
-              <legend>Preferred Time Slot <span class="req" aria-hidden="true">*</span></legend>
-              <div class="slots__options">
-                <label class="slot"><input type="radio" name="slot" value="Morning"><span>Morning</span></label>
-                <label class="slot"><input type="radio" name="slot" value="Afternoon"><span>Afternoon</span></label>
-                <label class="slot"><input type="radio" name="slot" value="Evening"><span>Evening</span></label>
-              </div>
-              <p class="field__error" id="err-slot" role="alert"></p>
             </fieldset>
 
-            <div class="field">
-              <label for="f-notes">Notes <span class="optional">(optional)</span></label>
-              <textarea id="f-notes" name="notes" rows="3" maxlength="500" placeholder="Anything Deepa should know – skin concerns, gate code, parking…"></textarea>
-            </div>
+            <!-- Step 2 -->
+            <fieldset class="form-step">
+              <legend class="form-step__title"><span class="form-step__num" aria-hidden="true">2</span> Where should we come?</legend>
+
+              <div class="field">
+                <label for="f-address">Full Address <span class="req" aria-hidden="true">*</span></label>
+                <textarea id="f-address" name="address" rows="2" autocomplete="street-address" required maxlength="300" placeholder="Flat / house no., building / society, street" aria-describedby="err-address"></textarea>
+                <p class="field__error" id="err-address"></p>
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="f-area">Area / Landmark <span class="req" aria-hidden="true">*</span></label>
+                  <input id="f-area" name="area" type="text" autocapitalize="words" enterkeyhint="next" required maxlength="100" placeholder="e.g. Near Lohegaon Road" aria-describedby="err-area">
+                  <p class="field__error" id="err-area"></p>
+                </div>
+                <div class="field">
+                  <label for="f-pincode">Pincode <span class="req" aria-hidden="true">*</span></label>
+                  <input id="f-pincode" name="pincode" type="text" inputmode="numeric" autocomplete="postal-code" enterkeyhint="next" required maxlength="6" placeholder="6 digits" aria-describedby="hint-pincode err-pincode">
+                  <div class="quick-fill" id="hint-pincode">
+                    <span class="quick-fill__label">Lohegaon:</span>
+                    <button type="button" class="chip" data-fill-pincode="411032">411032</button>
+                    <button type="button" class="chip" data-fill-pincode="411047">411047</button>
+                  </div>
+                  <p class="field__error" id="err-pincode"></p>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Step 3 -->
+            <fieldset class="form-step">
+              <legend class="form-step__title"><span class="form-step__num" aria-hidden="true">3</span> When suits you?</legend>
+
+              <div class="field">
+                <p class="field__label" id="date-label">Preferred Date <span class="req" aria-hidden="true">*</span></p>
+                <div class="date-chips" id="date-chips" role="radiogroup" aria-labelledby="date-label" aria-describedby="err-date"></div>
+                <div class="date-other">
+                  <label for="f-date">Or choose another date</label>
+                  <input id="f-date" name="date" type="date" required aria-describedby="err-date">
+                </div>
+                <p class="field__error" id="err-date"></p>
+              </div>
+
+              <fieldset class="field slots" aria-describedby="err-slot">
+                <legend>Preferred Time Slot <span class="req" aria-hidden="true">*</span></legend>
+                <div class="slots__options">
+                  <label class="slot"><input type="radio" name="slot" value="Morning"><span><svg class="ico" aria-hidden="true"><use href="#i-sunrise"/></svg>Morning</span></label>
+                  <label class="slot"><input type="radio" name="slot" value="Afternoon"><span><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg>Afternoon</span></label>
+                  <label class="slot"><input type="radio" name="slot" value="Evening"><span><svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg>Evening</span></label>
+                </div>
+                <p class="field__hint">Deepa will confirm the exact time with you on WhatsApp.</p>
+                <p class="field__error" id="err-slot"></p>
+              </fieldset>
+            </fieldset>
+
+            <!-- Step 4 -->
+            <fieldset class="form-step form-step--last">
+              <legend class="form-step__title"><span class="form-step__num" aria-hidden="true">4</span> Anything else? <span class="optional">(optional)</span></legend>
+              <div class="field">
+                <label for="f-notes">Notes for Deepa</label>
+                <div class="quick-fill quick-fill--notes" role="group" aria-label="Quick notes">
+                  <button type="button" class="chip" data-note="First-time client" aria-pressed="false">+ First-time client</button>
+                  <button type="button" class="chip" data-note="Sensitive skin" aria-pressed="false">+ Sensitive skin</button>
+                  <button type="button" class="chip" data-note="Please call before arriving" aria-pressed="false">+ Call before arriving</button>
+                  <button type="button" class="chip" data-note="Parking available" aria-pressed="false">+ Parking available</button>
+                </div>
+                <textarea id="f-notes" name="notes" rows="2" maxlength="500" placeholder="Skin concerns, gate code, directions…"></textarea>
+              </div>
+            </fieldset>
           </div>
 
           <aside class="panel summary" aria-labelledby="summary-title">
@@ -460,7 +504,7 @@
           <p class="eyebrow">How It Works</p>
           <h2 class="section-title" id="steps-title">Your Beauty Appointment in 4 Simple Steps</h2>
         </header>
-        <ol class="steps__list reveal">
+        <ol class="steps__list reveal" data-explode>
           <li class="step">
             <span class="step__num">1</span>
             <svg class="step__icon" aria-hidden="true"><use href="#i-bag"/></svg>
@@ -533,7 +577,7 @@
           <p class="eyebrow">Why Choose DeepGlow</p>
           <h2 class="section-title" id="why-title">Beauty Care That Comes to You</h2>
         </header>
-        <ul class="why__grid reveal">
+        <ul class="why__grid reveal" data-explode>
           <li class="feature"><svg class="feature__icon" aria-hidden="true"><use href="#i-award"/></svg><h3>12+ Years of Expertise</h3><p>Experienced beauty care focused on personalised service.</p></li>
           <li class="feature"><svg class="feature__icon" aria-hidden="true"><use href="#i-heart"/></svg><h3>500+ Happy Clients</h3><p>Experience serving customers across Pune.</p></li>
           <li class="feature"><svg class="feature__icon" aria-hidden="true"><use href="#i-shield"/></svg><h3>Hygienic Home Service</h3><p>Clean working practices and appropriate disposable kits at every appointment.</p></li>
@@ -669,6 +713,8 @@
   </div>
   <div class="sr-only" id="live" aria-live="polite" aria-atomic="true"></div>
 
-  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/app.js?v=20261001c" defer></script>
+  <script src="assets/js/particles.js?v=20261001c" defer></script>
+  <script src="assets/js/explode.js?v=20261001c" defer></script>
 </body>
 </html>
